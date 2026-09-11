@@ -50,9 +50,18 @@ android {
 }
 
 dependencies {
+    implementation(project(":core:database"))
+    implementation(project(":core:model"))
+    implementation(project(":core:otp"))
+    implementation(project(":core:security"))
+    implementation(project(":feature:accounts"))
+    implementation(project(":feature:addaccount"))
+    implementation(project(":feature:settings"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.room.runtime)
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.ui)

@@ -23,6 +23,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
@@ -37,7 +38,7 @@ import tm.khang.kauthenticator.core.security.SensitiveClipboard
 @Composable
 fun AccountListScreen(
     state: AccountListUiState,
-    otpProvider: (TotpAccount, Long) -> Result<AccountOtp>,
+    otpProvider: suspend (TotpAccount, Long) -> Result<AccountOtp>,
     onQueryChange: (String) -> Unit,
     onSortChange: (AccountSort) -> Unit,
     onEdit: (String, String, String) -> Unit,
@@ -97,7 +98,7 @@ private fun EmptyAccounts() {
 @Composable
 private fun AccountRow(
     account: TotpAccount,
-    otpProvider: (TotpAccount, Long) -> Result<AccountOtp>,
+    otpProvider: suspend (TotpAccount, Long) -> Result<AccountOtp>,
     onEdit: (String, String, String) -> Unit,
     onDeleteRequest: (String) -> Unit,
 ) {
@@ -116,8 +117,8 @@ private fun AccountRow(
     }
 
     val timeStep = epochSeconds / account.periodSeconds
-    val otp = remember(account, timeStep) {
-        otpProvider(account, epochSeconds).getOrNull()
+    val otp by produceState<AccountOtp?>(initialValue = null, account.id, timeStep) {
+        value = otpProvider(account, epochSeconds).getOrNull()
     }
     val secondsRemaining = secondsRemainingAt(epochSeconds, account.periodSeconds)
 
