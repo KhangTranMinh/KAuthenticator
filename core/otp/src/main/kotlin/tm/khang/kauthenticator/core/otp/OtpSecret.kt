@@ -25,6 +25,6 @@ class OtpSecret private constructor(private val bytes: ByteArray) {
             is OtpResult.Failure -> result
         }
 
-        internal fun fromBytes(value: ByteArray): OtpSecret = OtpSecret(value.copyOf())
+        fun fromBytes(value: ByteArray): OtpSecret = OtpSecret(value.copyOf())
     }
 }

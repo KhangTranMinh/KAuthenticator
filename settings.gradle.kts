@@ -21,3 +21,5 @@ include(":core:model")
 include(":core:security")
 include(":core:database")
 include(":feature:addaccount")
+
+include(":feature:accounts")

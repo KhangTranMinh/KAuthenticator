@@ -59,6 +59,45 @@ class EncryptedAccountRepository(
         AccountRepositoryResult.Failure
     }
 
+    fun updateMetadata(account: TotpAccount, nowEpochMillis: Long): AccountRepositoryResult<Unit> {
+        val existing = try {
+            dao.getById(account.id)
+        } catch (_: Exception) {
+            return AccountRepositoryResult.Failure
+        } ?: return AccountRepositoryResult.NotFound
+
+        return try {
+            dao.update(
+                existing.copy(
+                    issuer = account.issuer,
+                    accountName = account.accountName,
+                    algorithm = account.algorithm.name,
+                    digits = account.digits,
+                    periodSeconds = account.periodSeconds,
+                    updatedAtEpochMillis = nowEpochMillis,
+                ),
+            )
+            AccountRepositoryResult.Success(Unit)
+        } catch (_: Exception) {
+            AccountRepositoryResult.Failure
+        }
+    }
+
+    fun delete(id: String): AccountRepositoryResult<Unit> {
+        val existing = try {
+            dao.getById(id)
+        } catch (_: Exception) {
+            return AccountRepositoryResult.Failure
+        } ?: return AccountRepositoryResult.NotFound
+
+        return try {
+            dao.delete(existing)
+            AccountRepositoryResult.Success(Unit)
+        } catch (_: Exception) {
+            AccountRepositoryResult.Failure
+        }
+    }
+
     fun <T> withDecryptedSecret(id: String, block: (ByteArray) -> T): AccountRepositoryResult<T> {
         val entity = try {
             dao.getById(id)

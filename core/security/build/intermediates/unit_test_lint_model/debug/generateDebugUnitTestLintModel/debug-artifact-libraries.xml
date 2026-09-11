@@ -1,9 +1,9 @@
 <libraries>
   <library
       name=":@@:core:security::debug"
-      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/c12c672600c714c818627395e5caebdc/transformed/out/jars/classes.jar:/Users/khangtran/.gradle/caches/8.10.2/transforms/c12c672600c714c818627395e5caebdc/transformed/out/jars/libs/R.jar"
+      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/dce74e144f8b100f52413864507f1b48/transformed/out/jars/classes.jar:/Users/khangtran/.gradle/caches/8.10.2/transforms/dce74e144f8b100f52413864507f1b48/transformed/out/jars/libs/R.jar"
       resolved="KAuthenticator.core:security:unspecified"
-      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/c12c672600c714c818627395e5caebdc/transformed/out"
+      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/dce74e144f8b100f52413864507f1b48/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"

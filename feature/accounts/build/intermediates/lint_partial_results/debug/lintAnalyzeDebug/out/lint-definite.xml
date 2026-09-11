@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.8.2" type="incidents">
+
+    <incident
+        id="AutoboxingStateCreation"
+        severity="informational"
+        message="Prefer `mutableLongStateOf` instead of `mutableStateOf`">
+        <fix-replace
+            description="Replace with mutableLongStateOf"
+            replacement="androidx.compose.runtime.mutableLongStateOf"
+            shortenNames="true"
+            priority="0">
+            <range
+                file="${:feature:accounts*debug*MAIN*sourceProvider*0*javaDir*2}/tm/khang/kauthenticator/feature/accounts/AccountListScreen.kt"
+                startOffset="3992"
+                endOffset="4006"/>
+        </fix-replace>
+        <location
+            file="${:feature:accounts*debug*MAIN*sourceProvider*0*javaDir*2}/tm/khang/kauthenticator/feature/accounts/AccountListScreen.kt"
+            line="103"
+            column="48"
+            startOffset="3992"
+            endLine="103"
+            endColumn="62"
+            endOffset="4006"/>
+    </incident>
+
+</incidents>

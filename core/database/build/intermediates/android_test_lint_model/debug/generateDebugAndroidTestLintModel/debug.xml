@@ -25,6 +25,6 @@
       type="INSTRUMENTATION_TEST"
       applicationId="tm.khang.kauthenticator.core.database.test"
       generatedResourceFolders="build/generated/res/resValues/androidTest/debug"
-      desugaredMethodsFiles="/Users/khangtran/.gradle/caches/8.10.2/transforms/a02e0853362a3f67ae5ae23c0ed030a8/transformed/D8BackportedDesugaredMethods.txt">
+      desugaredMethodsFiles="/Users/khangtran/.gradle/caches/8.10.2/transforms/16ee8f2003ebe94141770cdf4271f68c/transformed/D8BackportedDesugaredMethods.txt">
   </artifact>
 </variant>

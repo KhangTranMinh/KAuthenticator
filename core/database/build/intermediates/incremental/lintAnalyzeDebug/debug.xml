@@ -7,7 +7,7 @@
     mergedManifest="build/intermediates/merged_manifest/debug/processDebugManifest/AndroidManifest.xml"
     proguardFiles="build/intermediates/default_proguard_files/global/proguard-android.txt-8.8.2"
     partialResultsDir="build/intermediates/lint_partial_results/debug/lintAnalyzeDebug/out"
-    desugaredMethodsFiles="/Users/khangtran/.gradle/caches/8.10.2/transforms/f38bc9e33d4dd22766eb21974547fefa/transformed/D8BackportedDesugaredMethods.txt">
+    desugaredMethodsFiles="/Users/khangtran/.gradle/caches/8.10.2/transforms/16ee8f2003ebe94141770cdf4271f68c/transformed/D8BackportedDesugaredMethods.txt">
   <buildFeatures
       namespacing="REQUIRED"/>
   <sourceProviders>
@@ -27,6 +27,6 @@
       applicationId="tm.khang.kauthenticator.core.database"
       generatedSourceFolders="build/generated/ksp/debug/java:build/generated/ksp/debug/kotlin:build/generated/ap_generated_sources/debug/out"
       generatedResourceFolders="build/generated/res/resValues/debug"
-      desugaredMethodsFiles="/Users/khangtran/.gradle/caches/8.10.2/transforms/f38bc9e33d4dd22766eb21974547fefa/transformed/D8BackportedDesugaredMethods.txt">
+      desugaredMethodsFiles="/Users/khangtran/.gradle/caches/8.10.2/transforms/16ee8f2003ebe94141770cdf4271f68c/transformed/D8BackportedDesugaredMethods.txt">
   </artifact>
 </variant>
