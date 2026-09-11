@@ -5,7 +5,7 @@
         android:allowBackup="false"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.KAuthenticator">
+        android:theme="@style/Theme.KAuthenticator.Starting">
         <activity
             android:name=".MainActivity"
             android:exported="true">

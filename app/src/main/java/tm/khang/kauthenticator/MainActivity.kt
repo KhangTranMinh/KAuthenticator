@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -11,6 +12,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -21,9 +24,11 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FilledTonalIconButton
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
@@ -67,6 +72,7 @@ import tm.khang.kauthenticator.ui.theme.KAuthenticatorTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
@@ -173,7 +179,26 @@ fun KAuthenticatorApp(
         }
     }
 
-    Scaffold(modifier = modifier.fillMaxSize()) { innerPadding ->
+    Scaffold(
+        modifier = modifier.fillMaxSize(),
+        contentWindowInsets = WindowInsets(0, 0, 0, 0),
+        floatingActionButton = {
+            if (destination == AppDestination.ACCOUNTS) {
+                FloatingActionButton(
+                    onClick = {
+                        enrollmentMessage = null
+                        destination = AppDestination.ADD_ACCOUNT
+                    },
+                    modifier = Modifier.navigationBarsPadding(),
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Add,
+                        contentDescription = "Add account",
+                    )
+                }
+            }
+        },
+    ) { innerPadding ->
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -182,14 +207,15 @@ fun KAuthenticatorApp(
             AppHeader(
                 destination = destination,
                 onAccounts = { destination = AppDestination.ACCOUNTS },
-                onAdd = {
-                    enrollmentMessage = null
-                    destination = AppDestination.ADD_ACCOUNT
-                },
                 onSettings = { destination = AppDestination.SETTINGS },
             )
 
-            when (destination) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .navigationBarsPadding(),
+            ) {
+                when (destination) {
                 AppDestination.ACCOUNTS -> AccountListScreen(
                     state = accountState,
                     otpProvider = { account, epochSeconds ->
@@ -250,6 +276,7 @@ fun KAuthenticatorApp(
                     onThemeChange = { theme -> onSettingsChanged(settings.copy(theme = theme)) },
                     modifier = Modifier.fillMaxSize(),
                 )
+                }
             }
         }
     }
@@ -296,7 +323,6 @@ fun KAuthenticatorApp(
 private fun AppHeader(
     destination: AppDestination,
     onAccounts: () -> Unit,
-    onAdd: () -> Unit,
     onSettings: () -> Unit,
 ) {
     Surface(
@@ -306,6 +332,7 @@ private fun AppHeader(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
+                .statusBarsPadding()
                 .padding(horizontal = 20.dp, vertical = 14.dp),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(8.dp),
@@ -341,12 +368,6 @@ private fun AppHeader(
                     Icon(
                         imageVector = Icons.Default.Settings,
                         contentDescription = "Settings",
-                    )
-                }
-                FilledTonalIconButton(onClick = onAdd) {
-                    Icon(
-                        imageVector = Icons.Default.Add,
-                        contentDescription = "Add account",
                     )
                 }
             }
