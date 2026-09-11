@@ -1,1 +1,0 @@
-tm.khang.kauthenticator.core.security

@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="tm.khang.kauthenticator.core.otp.TotpGeneratorTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-11T08:36:12" hostname="QGM0180-Khang.local" time="0.008">
-  <properties/>
-  <testcase name="uses injected clock exactly across a period boundary" classname="tm.khang.kauthenticator.core.otp.TotpGeneratorTest" time="0.002"/>
-  <testcase name="matches RFC 6238 SHA1 SHA256 and SHA512 vectors" classname="tm.khang.kauthenticator.core.otp.TotpGeneratorTest" time="0.006"/>
-  <testcase name="reports countdown from timestamp without decrementing state" classname="tm.khang.kauthenticator.core.otp.TotpGeneratorTest" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

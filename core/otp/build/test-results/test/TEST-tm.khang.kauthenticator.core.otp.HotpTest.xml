@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="tm.khang.kauthenticator.core.otp.HotpTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-09-11T08:36:12" hostname="QGM0180-Khang.local" time="0.052">
-  <properties/>
-  <testcase name="supports eight digits and rejects invalid input" classname="tm.khang.kauthenticator.core.otp.HotpTest" time="0.051"/>
-  <testcase name="matches RFC 4226 test vectors" classname="tm.khang.kauthenticator.core.otp.HotpTest" time="0.001"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
