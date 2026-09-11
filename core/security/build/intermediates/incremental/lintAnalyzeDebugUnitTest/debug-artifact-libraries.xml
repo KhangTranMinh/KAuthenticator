@@ -1,0 +1,23 @@
+<libraries>
+  <library
+      name=":@@:core:security::debug"
+      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/c7b0d29f86185370c1a244ee08c54e9d/transformed/out/jars/classes.jar:/Users/khangtran/.gradle/caches/8.10.2/transforms/c7b0d29f86185370c1a244ee08c54e9d/transformed/out/jars/libs/R.jar"
+      resolved="KAuthenticator.core:security:unspecified"
+      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/c7b0d29f86185370c1a244ee08c54e9d/transformed/out"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="org.jetbrains.kotlin:kotlin-stdlib:2.1.10@jar"
+      jars="/Users/khangtran/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/2.1.10/d3028429e7151d7a7c1a0d63a4f60eac86a87b91/kotlin-stdlib-2.1.10.jar"
+      resolved="org.jetbrains.kotlin:kotlin-stdlib:2.1.10"/>
+  <library
+      name="org.jetbrains:annotations:13.0@jar"
+      jars="/Users/khangtran/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/13.0/919f0dfe192fb4e063e7dacadee7f8bb9a2672a9/annotations-13.0.jar"
+      resolved="org.jetbrains:annotations:13.0"/>
+</libraries>

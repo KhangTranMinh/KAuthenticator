@@ -17,3 +17,6 @@ dependencyResolutionManagement {
 rootProject.name = "KAuthenticator"
 include(":app")
 include(":core:otp")
+include(":core:model")
+include(":core:security")
+include(":core:database")
