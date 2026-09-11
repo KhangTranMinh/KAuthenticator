@@ -3,6 +3,15 @@ package tm.khang.kauthenticator.core.otp
 class OtpSecret private constructor(private val bytes: ByteArray) {
     internal fun copyBytes(): ByteArray = bytes.copyOf()
 
+    fun <T> useBytes(block: (ByteArray) -> T): T {
+        val copy = bytes.copyOf()
+        return try {
+            block(copy)
+        } finally {
+            copy.fill(0)
+        }
+    }
+
     override fun toString(): String = "OtpSecret(**redacted**)"
 
     override fun equals(other: Any?): Boolean =

@@ -1,9 +1,9 @@
 <libraries>
   <library
       name=":@@:core:database::debug"
-      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/433343fba3b34ddb9c1187bee2a25feb/transformed/out/jars/classes.jar:/Users/khangtran/.gradle/caches/8.10.2/transforms/433343fba3b34ddb9c1187bee2a25feb/transformed/out/jars/libs/R.jar"
+      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/323ed1e1a07bd7f304daceecf1ce0fd1/transformed/out/jars/classes.jar:/Users/khangtran/.gradle/caches/8.10.2/transforms/323ed1e1a07bd7f304daceecf1ce0fd1/transformed/out/jars/libs/R.jar"
       resolved="KAuthenticator.core:database:unspecified"
-      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/433343fba3b34ddb9c1187bee2a25feb/transformed/out"
+      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/323ed1e1a07bd7f304daceecf1ce0fd1/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -22,9 +22,9 @@
       resolved="::"/>
   <library
       name=":@@:core:security::debug"
-      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/c7b0d29f86185370c1a244ee08c54e9d/transformed/out/jars/classes.jar:/Users/khangtran/.gradle/caches/8.10.2/transforms/c7b0d29f86185370c1a244ee08c54e9d/transformed/out/jars/libs/R.jar"
+      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/c12c672600c714c818627395e5caebdc/transformed/out/jars/classes.jar:/Users/khangtran/.gradle/caches/8.10.2/transforms/c12c672600c714c818627395e5caebdc/transformed/out/jars/libs/R.jar"
       resolved="KAuthenticator.core:security:unspecified"
-      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/c7b0d29f86185370c1a244ee08c54e9d/transformed/out"
+      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/c12c672600c714c818627395e5caebdc/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -39,9 +39,9 @@
       resolved="androidx.room:room-common-jvm:2.7.2"/>
   <library
       name="androidx.room:room-runtime-android:2.7.2@aar"
-      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/46c46e269d3f456571a258ac95479cd1/transformed/room-runtime-release/jars/classes.jar"
+      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/ef1f8330fa2debeec1c5604ed07fc0ba/transformed/room-runtime-release/jars/classes.jar"
       resolved="androidx.room:room-runtime-android:2.7.2"
-      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/46c46e269d3f456571a258ac95479cd1/transformed/room-runtime-release"
+      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/ef1f8330fa2debeec1c5604ed07fc0ba/transformed/room-runtime-release"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -56,9 +56,9 @@
       resolved="androidx.collection:collection-jvm:1.4.2"/>
   <library
       name="androidx.sqlite:sqlite-framework-android:2.5.1@aar"
-      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/c89600a003ab31a4edf8e97683700925/transformed/sqlite-framework-release/jars/classes.jar"
+      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/113fa6c2924a7a95883d757c015c020f/transformed/sqlite-framework-release/jars/classes.jar"
       resolved="androidx.sqlite:sqlite-framework-android:2.5.1"
-      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/c89600a003ab31a4edf8e97683700925/transformed/sqlite-framework-release"
+      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/113fa6c2924a7a95883d757c015c020f/transformed/sqlite-framework-release"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -69,9 +69,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.sqlite:sqlite-android:2.5.1@aar"
-      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/f0ff60ae59074c10302f38cf9924cf33/transformed/sqlite-release/jars/classes.jar"
+      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/3e2e80c00e7e31df1e5e8b793cdb9419/transformed/sqlite-release/jars/classes.jar"
       resolved="androidx.sqlite:sqlite-android:2.5.1"
-      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/f0ff60ae59074c10302f38cf9924cf33/transformed/sqlite-release"
+      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/3e2e80c00e7e31df1e5e8b793cdb9419/transformed/sqlite-release"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -122,9 +122,9 @@
       resolved="org.jspecify:jspecify:1.0.0"/>
   <library
       name="androidx.annotation:annotation-experimental:1.4.1@aar"
-      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/6a882cc515961b4b770eb88f7adaf36f/transformed/annotation-experimental-1.4.1/jars/classes.jar"
+      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/6caeae78e5c0c99d06aa3408d57132bf/transformed/annotation-experimental-1.4.1/jars/classes.jar"
       resolved="androidx.annotation:annotation-experimental:1.4.1"
-      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/6a882cc515961b4b770eb88f7adaf36f/transformed/annotation-experimental-1.4.1"
+      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/6caeae78e5c0c99d06aa3408d57132bf/transformed/annotation-experimental-1.4.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -135,9 +135,9 @@
       proguardRules="proguard.txt"/>
   <library
       name="androidx.arch.core:core-runtime:2.2.0@aar"
-      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/3413f3ebe47484d9b2893aaf4093e818/transformed/core-runtime-2.2.0/jars/classes.jar"
+      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/561ec284c3a09b1d4e49b71af4740a27/transformed/core-runtime-2.2.0/jars/classes.jar"
       resolved="androidx.arch.core:core-runtime:2.2.0"
-      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/3413f3ebe47484d9b2893aaf4093e818/transformed/core-runtime-2.2.0"
+      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/561ec284c3a09b1d4e49b71af4740a27/transformed/core-runtime-2.2.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"

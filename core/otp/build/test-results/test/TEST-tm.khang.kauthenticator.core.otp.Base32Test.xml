@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="tm.khang.kauthenticator.core.otp.Base32Test" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-11T04:07:08" hostname="QGM0180-Khang.local" time="0.019">
+<testsuite name="tm.khang.kauthenticator.core.otp.Base32Test" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-11T04:47:20" hostname="QGM0180-Khang.local" time="0.017">
   <properties/>
   <testcase name="decodes RFC 4648 vectors with or without padding" classname="tm.khang.kauthenticator.core.otp.Base32Test" time="0.014"/>
-  <testcase name="rejects whitespace invalid alphabet empty input and malformed padding" classname="tm.khang.kauthenticator.core.otp.Base32Test" time="0.003"/>
-  <testcase name="rejects non zero trailing bits" classname="tm.khang.kauthenticator.core.otp.Base32Test" time="0.002"/>
+  <testcase name="rejects whitespace invalid alphabet empty input and malformed padding" classname="tm.khang.kauthenticator.core.otp.Base32Test" time="0.002"/>
+  <testcase name="rejects non zero trailing bits" classname="tm.khang.kauthenticator.core.otp.Base32Test" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -26,7 +26,27 @@ class EncryptedAccountRepository(
             SecretCipherResult.AuthenticationFailed, SecretCipherResult.Failure -> return AccountRepositoryResult.Failure
         }
         return try {
-            dao.insert(account.toEntity(encrypted, nowEpochMillis))
+            dao.insert(account.toEntity(encrypted, nowEpochMillis, nowEpochMillis))
+            AccountRepositoryResult.Success(Unit)
+        } catch (_: Exception) {
+            AccountRepositoryResult.Failure
+        }
+    }
+
+    fun update(account: TotpAccount, plaintextSecret: ByteArray, nowEpochMillis: Long): AccountRepositoryResult<Unit> {
+        val existing = try {
+            dao.getById(account.id)
+        } catch (_: Exception) {
+            return AccountRepositoryResult.Failure
+        } ?: return AccountRepositoryResult.NotFound
+
+        val encrypted = when (val result = cipher.encrypt(plaintextSecret)) {
+            is SecretCipherResult.Success -> result.value
+            SecretCipherResult.KeyInvalidated -> return AccountRepositoryResult.KeyInvalidated
+            SecretCipherResult.AuthenticationFailed, SecretCipherResult.Failure -> return AccountRepositoryResult.Failure
+        }
+        return try {
+            dao.update(account.toEntity(encrypted, existing.createdAtEpochMillis, nowEpochMillis))
             AccountRepositoryResult.Success(Unit)
         } catch (_: Exception) {
             AccountRepositoryResult.Failure
@@ -67,7 +87,8 @@ class EncryptedAccountRepository(
 
     private fun TotpAccount.toEntity(
         encrypted: EncryptedSecretEnvelope,
-        nowEpochMillis: Long,
+        createdAtEpochMillis: Long,
+        updatedAtEpochMillis: Long,
     ) = AuthenticatorAccountEntity(
         id = id,
         issuer = issuer,
@@ -78,8 +99,8 @@ class EncryptedAccountRepository(
         secretCiphertext = encrypted.ciphertext,
         secretIv = encrypted.iv,
         secretSchemaVersion = encrypted.schemaVersion,
-        createdAtEpochMillis = nowEpochMillis,
-        updatedAtEpochMillis = nowEpochMillis,
+        createdAtEpochMillis = createdAtEpochMillis,
+        updatedAtEpochMillis = updatedAtEpochMillis,
     )
 
     private fun AuthenticatorAccountEntity.toDomain() = TotpAccount(
