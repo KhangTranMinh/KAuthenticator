@@ -106,7 +106,7 @@ object OtpAuthUriParser {
     }
 
     private fun decodeComponent(value: String): String? = try {
-        URLDecoder.decode(value.replace("+", "%2B"), StandardCharsets.UTF_8)
+        URLDecoder.decode(value.replace("+", "%2B"), StandardCharsets.UTF_8.name())
     } catch (_: IllegalArgumentException) {
         null
     }
