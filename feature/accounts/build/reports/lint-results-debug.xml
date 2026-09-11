@@ -13,7 +13,7 @@
         errorLine2="                                               ~~~~~~~~~~~~~~">
         <location
             file="/Users/khangtran/KAuthenticator/feature/accounts/src/main/kotlin/tm/khang/kauthenticator/feature/accounts/AccountListScreen.kt"
-            line="103"
+            line="106"
             column="48"/>
     </issue>
 

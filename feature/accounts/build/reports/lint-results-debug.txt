@@ -1,4 +1,4 @@
-/Users/khangtran/KAuthenticator/feature/accounts/src/main/kotlin/tm/khang/kauthenticator/feature/accounts/AccountListScreen.kt:103: Information: Prefer mutableLongStateOf instead of mutableStateOf [AutoboxingStateCreation from androidx.compose.runtime]
+/Users/khangtran/KAuthenticator/feature/accounts/src/main/kotlin/tm/khang/kauthenticator/feature/accounts/AccountListScreen.kt:106: Information: Prefer mutableLongStateOf instead of mutableStateOf [AutoboxingStateCreation from androidx.compose.runtime]
     var epochSeconds by remember(account.id) { mutableStateOf(System.currentTimeMillis() / 1_000L) }
                                                ~~~~~~~~~~~~~~
 

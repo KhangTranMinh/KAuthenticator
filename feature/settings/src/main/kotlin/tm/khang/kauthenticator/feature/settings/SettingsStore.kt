@@ -16,7 +16,7 @@ class SharedPreferencesSettingsStore(
         biometricLockEnabled = preferences.getBoolean(KEY_BIOMETRIC_LOCK, false),
         screenshotProtectionEnabled = preferences.getBoolean(KEY_SCREENSHOT_PROTECTION, false),
         theme = preferences.getString(KEY_THEME, null)
-            ?.let { stored -> AppTheme.entries.firstOrNull { it.name == stored } }
+            ?.let(AppTheme::fromPersistenceValue)
             ?: AppTheme.SYSTEM,
     )
 
@@ -24,7 +24,7 @@ class SharedPreferencesSettingsStore(
         preferences.edit()
             .putBoolean(KEY_BIOMETRIC_LOCK, settings.biometricLockEnabled)
             .putBoolean(KEY_SCREENSHOT_PROTECTION, settings.screenshotProtectionEnabled)
-            .putString(KEY_THEME, settings.theme.name)
+            .putString(KEY_THEME, settings.theme.persistenceValue)
             .apply()
     }
 

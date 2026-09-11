@@ -26,11 +26,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalClipboardManager
-import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.delay
 import tm.khang.kauthenticator.core.model.TotpAccount
+import tm.khang.kauthenticator.core.security.SensitiveClipboard
 
 @Composable
 fun AccountListScreen(
@@ -99,7 +101,8 @@ private fun AccountRow(
     onEdit: (String, String, String) -> Unit,
     onDeleteRequest: (String) -> Unit,
 ) {
-    val clipboard = LocalClipboardManager.current
+    val context = LocalContext.current
+    val clipboard = remember(context) { SensitiveClipboard(context.applicationContext) }
     var epochSeconds by remember(account.id) { mutableStateOf(System.currentTimeMillis() / 1_000L) }
     var editing by remember(account.id) { mutableStateOf(false) }
     var issuer by remember(account.id, account.issuer) { mutableStateOf(account.issuer) }
@@ -126,11 +129,18 @@ private fun AccountRow(
             Text(
                 text = otp?.code ?: "------",
                 style = MaterialTheme.typography.headlineMedium,
-                modifier = Modifier.clickable(enabled = otp != null) {
-                    otp?.let { clipboard.setText(AnnotatedString(it.code)) }
+                modifier = Modifier
+                    .semantics { contentDescription = "One-time password ${otp?.code ?: "unavailable"}" }
+                    .clickable(enabled = otp != null) {
+                        otp?.let { clipboard.copyAndScheduleClear("TOTP code", it.code) }
+                    },
+            )
+            Text(
+                text = "${secondsRemaining}s",
+                modifier = Modifier.semantics {
+                    contentDescription = "$secondsRemaining seconds until code refresh"
                 },
             )
-            Text("${secondsRemaining}s")
             Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                 TextButton(onClick = { editing = true }) { Text("Edit") }
                 TextButton(onClick = { onDeleteRequest(account.id) }) { Text("Delete") }

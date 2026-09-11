@@ -30,7 +30,7 @@ class AccountListViewModelTest {
         val handle = SavedStateHandle()
         val viewModel = AccountListViewModel(handle, FakeStore(accounts()))
         viewModel.setSort(AccountSort.ACCOUNT_NAME)
-        assertEquals(AccountSort.ACCOUNT_NAME.name, handle.get<String>("account_list_sort"))
+        assertEquals(AccountSort.ACCOUNT_NAME.persistenceValue, handle.get<String>("account_list_sort"))
         assertEquals(listOf("1", "2"), viewModel.state.accounts.map { it.id })
     }
 

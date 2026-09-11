@@ -12,17 +12,17 @@
             priority="0">
             <range
                 file="${:feature:accounts*debug*MAIN*sourceProvider*0*javaDir*2}/tm/khang/kauthenticator/feature/accounts/AccountListScreen.kt"
-                startOffset="3992"
-                endOffset="4006"/>
+                startOffset="4180"
+                endOffset="4194"/>
         </fix-replace>
         <location
             file="${:feature:accounts*debug*MAIN*sourceProvider*0*javaDir*2}/tm/khang/kauthenticator/feature/accounts/AccountListScreen.kt"
-            line="103"
+            line="106"
             column="48"
-            startOffset="3992"
-            endLine="103"
+            startOffset="4180"
+            endLine="106"
             endColumn="62"
-            endOffset="4006"/>
+            endOffset="4194"/>
     </incident>
 
 </incidents>

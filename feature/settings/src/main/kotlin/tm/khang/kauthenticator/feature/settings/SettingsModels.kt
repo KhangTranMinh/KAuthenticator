@@ -1,9 +1,16 @@
 package tm.khang.kauthenticator.feature.settings
 
-enum class AppTheme {
-    SYSTEM,
-    LIGHT,
-    DARK,
+enum class AppTheme(val persistenceValue: String) {
+    SYSTEM("system"),
+    LIGHT("light"),
+    DARK("dark"),
+    ;
+
+    companion object {
+        fun fromPersistenceValue(value: String): AppTheme? = entries.firstOrNull {
+            it.persistenceValue == value || it.name == value
+        }
+    }
 }
 
 data class AppSettings(

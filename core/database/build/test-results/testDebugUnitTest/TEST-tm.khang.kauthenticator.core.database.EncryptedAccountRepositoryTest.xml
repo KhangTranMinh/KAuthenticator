@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="tm.khang.kauthenticator.core.database.EncryptedAccountRepositoryTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-11T06:31:21" hostname="QGM0180-Khang.local" time="0.012">
+<testsuite name="tm.khang.kauthenticator.core.database.EncryptedAccountRepositoryTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2026-09-11T08:36:16" hostname="QGM0180-Khang.local" time="0.029">
   <properties/>
-  <testcase name="withDecryptedSecret_mapsAuthenticationFailureToCorruptedSecret" classname="tm.khang.kauthenticator.core.database.EncryptedAccountRepositoryTest" time="0.002"/>
-  <testcase name="withDecryptedSecret_wipesPlaintextAfterUse" classname="tm.khang.kauthenticator.core.database.EncryptedAccountRepositoryTest" time="0.005"/>
-  <testcase name="insert_encryptsSecretBeforePersisting" classname="tm.khang.kauthenticator.core.database.EncryptedAccountRepositoryTest" time="0.005"/>
+  <testcase name="withDecryptedSecret_mapsAuthenticationFailureToCorruptedSecret" classname="tm.khang.kauthenticator.core.database.EncryptedAccountRepositoryTest" time="0.014"/>
+  <testcase name="getAll_readsLegacyAlgorithmName" classname="tm.khang.kauthenticator.core.database.EncryptedAccountRepositoryTest" time="0.006"/>
+  <testcase name="withDecryptedSecret_wipesPlaintextAfterUse" classname="tm.khang.kauthenticator.core.database.EncryptedAccountRepositoryTest" time="0.008"/>
+  <testcase name="insert_encryptsSecretBeforePersisting" classname="tm.khang.kauthenticator.core.database.EncryptedAccountRepositoryTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

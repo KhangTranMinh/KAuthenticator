@@ -14,9 +14,9 @@
       proguardRules="proguard.txt"/>
   <library
       name=":@@:core:database::debug"
-      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/a2d4c294ce49a937f78461e33b62f957/transformed/out/jars/classes.jar:/Users/khangtran/.gradle/caches/8.10.2/transforms/a2d4c294ce49a937f78461e33b62f957/transformed/out/jars/libs/R.jar"
+      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/35466d75998d8fcd13ae84442f2834bf/transformed/out/jars/classes.jar:/Users/khangtran/.gradle/caches/8.10.2/transforms/35466d75998d8fcd13ae84442f2834bf/transformed/out/jars/libs/R.jar"
       resolved="KAuthenticator.core:database:unspecified"
-      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/a2d4c294ce49a937f78461e33b62f957/transformed/out"
+      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/35466d75998d8fcd13ae84442f2834bf/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"

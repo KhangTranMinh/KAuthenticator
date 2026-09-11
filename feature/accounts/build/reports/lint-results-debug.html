@@ -179,7 +179,7 @@ document.getElementById(id).style.display = 'none';
     <div class="mdl-layout__header-row">
       <span class="mdl-layout-title">Lint Report: No errors or warnings</span>
       <div class="mdl-layout-spacer"></div>
-      <nav class="mdl-navigation mdl-layout--large-screen-only">Check performed at Fri Sep 11 13:31:53 ICT 2026 by AGP (8.8.2)</nav>
+      <nav class="mdl-navigation mdl-layout--large-screen-only">Check performed at Fri Sep 11 15:36:20 ICT 2026 by AGP (8.8.2)</nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">
@@ -225,14 +225,14 @@ Dismiss</button>            </div>
               <div class="mdl-card__supporting-text">
 <div class="issue">
 <div class="warningslist">
-<span class="location"><a href="../../src/main/kotlin/tm/khang/kauthenticator/feature/accounts/AccountListScreen.kt">../../src/main/kotlin/tm/khang/kauthenticator/feature/accounts/AccountListScreen.kt</a>:103</span>: <span class="message">Prefer <code>mutableLongStateOf</code> instead of <code>mutableStateOf</code></span><br /><pre class="errorlines">
-<span class="lineno"> 100 </span>    onDeleteRequest: (String) -> Unit,
-<span class="lineno"> 101 </span>) {
-<span class="lineno"> 102 </span>    <span class="keyword">val</span> clipboard = LocalClipboardManager.current
-<span class="caretline"><span class="lineno"> 103 </span>    <span class="keyword">var</span> epochSeconds by remember(account.id) { <span class="warning">mutableStateOf</span>(System.currentTimeMillis() / <span class="number">1_000L</span>) }</span>
-<span class="lineno"> 104 </span>    <span class="keyword">var</span> editing by remember(account.id) { mutableStateOf(<span class="keyword">false</span>) }
-<span class="lineno"> 105 </span>    <span class="keyword">var</span> issuer by remember(account.id, account.issuer) { mutableStateOf(account.issuer) }
-<span class="lineno"> 106 </span>    <span class="keyword">var</span> accountName by remember(account.id, account.accountName) { mutableStateOf(account.accountName) }
+<span class="location"><a href="../../src/main/kotlin/tm/khang/kauthenticator/feature/accounts/AccountListScreen.kt">../../src/main/kotlin/tm/khang/kauthenticator/feature/accounts/AccountListScreen.kt</a>:106</span>: <span class="message">Prefer <code>mutableLongStateOf</code> instead of <code>mutableStateOf</code></span><br /><pre class="errorlines">
+<span class="lineno"> 103 </span>) {
+<span class="lineno"> 104 </span>    <span class="keyword">val</span> context = LocalContext.current
+<span class="lineno"> 105 </span>    <span class="keyword">val</span> clipboard = remember(context) { SensitiveClipboard(context.applicationContext) }
+<span class="caretline"><span class="lineno"> 106 </span>    <span class="keyword">var</span> epochSeconds by remember(account.id) { <span class="warning">mutableStateOf</span>(System.currentTimeMillis() / <span class="number">1_000L</span>) }</span>
+<span class="lineno"> 107 </span>    <span class="keyword">var</span> editing by remember(account.id) { mutableStateOf(<span class="keyword">false</span>) }
+<span class="lineno"> 108 </span>    <span class="keyword">var</span> issuer by remember(account.id, account.issuer) { mutableStateOf(account.issuer) }
+<span class="lineno"> 109 </span>    <span class="keyword">var</span> accountName by remember(account.id, account.accountName) { mutableStateOf(account.accountName) }
 </pre>
 
 </div>

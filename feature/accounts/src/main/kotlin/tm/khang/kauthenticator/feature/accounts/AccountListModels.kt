@@ -2,9 +2,16 @@ package tm.khang.kauthenticator.feature.accounts
 
 import tm.khang.kauthenticator.core.model.TotpAccount
 
-enum class AccountSort {
-    ISSUER,
-    ACCOUNT_NAME,
+enum class AccountSort(val persistenceValue: String) {
+    ISSUER("issuer"),
+    ACCOUNT_NAME("account_name"),
+    ;
+
+    companion object {
+        fun fromPersistenceValue(value: String): AccountSort? = entries.firstOrNull {
+            it.persistenceValue == value || it.name == value
+        }
+    }
 }
 
 data class AccountListUiState(

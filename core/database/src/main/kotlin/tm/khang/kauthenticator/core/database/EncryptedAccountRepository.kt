@@ -71,7 +71,7 @@ class EncryptedAccountRepository(
                 existing.copy(
                     issuer = account.issuer,
                     accountName = account.accountName,
-                    algorithm = account.algorithm.name,
+                    algorithm = account.algorithm.persistenceValue,
                     digits = account.digits,
                     periodSeconds = account.periodSeconds,
                     updatedAtEpochMillis = nowEpochMillis,
@@ -132,7 +132,7 @@ class EncryptedAccountRepository(
         id = id,
         issuer = issuer,
         accountName = accountName,
-        algorithm = algorithm.name,
+        algorithm = algorithm.persistenceValue,
         digits = digits,
         periodSeconds = periodSeconds,
         secretCiphertext = encrypted.ciphertext,
@@ -142,13 +142,18 @@ class EncryptedAccountRepository(
         updatedAtEpochMillis = updatedAtEpochMillis,
     )
 
-    private fun AuthenticatorAccountEntity.toDomain() = TotpAccount(
-        id = id,
-        issuer = issuer,
-        accountName = accountName,
-        secret = SecretReference(id),
-        algorithm = TotpAlgorithm.valueOf(algorithm),
-        digits = digits,
-        periodSeconds = periodSeconds,
-    )
+    private fun AuthenticatorAccountEntity.toDomain(): TotpAccount {
+        val persistedAlgorithm = requireNotNull(TotpAlgorithm.fromPersistenceValue(algorithm)) {
+            "Unsupported persisted TOTP algorithm"
+        }
+        return TotpAccount(
+            id = id,
+            issuer = issuer,
+            accountName = accountName,
+            secret = SecretReference(id),
+            algorithm = persistedAlgorithm,
+            digits = digits,
+            periodSeconds = periodSeconds,
+        )
+    }
 }

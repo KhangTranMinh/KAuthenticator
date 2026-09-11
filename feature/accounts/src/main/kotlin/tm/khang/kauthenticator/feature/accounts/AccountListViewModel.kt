@@ -16,7 +16,7 @@ class AccountListViewModel(
 
     var state: AccountListUiState by mutableStateOf(AccountListUiState(
         query = savedStateHandle[KEY_QUERY] ?: "",
-        sort = savedStateHandle.get<String>(KEY_SORT)?.let { runCatching { AccountSort.valueOf(it) }.getOrNull() }
+        sort = savedStateHandle.get<String>(KEY_SORT)?.let(AccountSort::fromPersistenceValue)
             ?: AccountSort.ISSUER,
     ))
         private set
@@ -44,7 +44,7 @@ class AccountListViewModel(
     }
 
     fun setSort(sort: AccountSort) {
-        savedStateHandle[KEY_SORT] = sort.name
+        savedStateHandle[KEY_SORT] = sort.persistenceValue
         state = state.copy(sort = sort, accounts = filteredAccounts(sort = sort))
     }
 

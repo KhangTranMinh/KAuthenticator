@@ -23,7 +23,21 @@ class EncryptedAccountRepositoryTest {
 
         assertTrue(result is AccountRepositoryResult.Success)
         assertArrayEquals(byteArrayOf(9, 9, 9), dao.saved?.secretCiphertext)
+        assertEquals("sha1", dao.saved?.algorithm)
         assertArrayEquals(secret, cipher.lastPlaintext)
+    }
+
+
+    @Test
+    fun getAll_readsLegacyAlgorithmName() {
+        val dao = FakeDao().apply { saved = sampleEntity() }
+        val repository = EncryptedAccountRepository(dao, FakeCipher())
+
+        val result = repository.getAll()
+
+        assertTrue(result is AccountRepositoryResult.Success)
+        val accounts = (result as AccountRepositoryResult.Success).value
+        assertEquals(TotpAlgorithm.SHA1, accounts.single().algorithm)
     }
 
     @Test

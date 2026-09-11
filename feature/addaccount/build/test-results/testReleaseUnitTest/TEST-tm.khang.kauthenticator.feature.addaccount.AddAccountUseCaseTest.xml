@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="tm.khang.kauthenticator.feature.addaccount.AddAccountUseCaseTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-09-11T06:31:29" hostname="QGM0180-Khang.local" time="0.036">
+<testsuite name="tm.khang.kauthenticator.feature.addaccount.AddAccountUseCaseTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2026-09-11T08:36:19" hostname="QGM0180-Khang.local" time="0.028">
   <properties/>
-  <testcase name="invalid QR never writes storage" classname="tm.khang.kauthenticator.feature.addaccount.AddAccountUseCaseTest" time="0.008"/>
-  <testcase name="valid QR supports SHA1 SHA256 and SHA512" classname="tm.khang.kauthenticator.feature.addaccount.AddAccountUseCaseTest" time="0.024"/>
-  <testcase name="duplicate can keep both with new id" classname="tm.khang.kauthenticator.feature.addaccount.AddAccountUseCaseTest" time="0.002"/>
-  <testcase name="duplicate can replace existing account" classname="tm.khang.kauthenticator.feature.addaccount.AddAccountUseCaseTest" time="0.001"/>
+  <testcase name="invalid QR never writes storage" classname="tm.khang.kauthenticator.feature.addaccount.AddAccountUseCaseTest" time="0.006"/>
+  <testcase name="valid QR supports SHA1 SHA256 and SHA512" classname="tm.khang.kauthenticator.feature.addaccount.AddAccountUseCaseTest" time="0.019"/>
+  <testcase name="duplicate can keep both with new id" classname="tm.khang.kauthenticator.feature.addaccount.AddAccountUseCaseTest" time="0.001"/>
+  <testcase name="duplicate can replace existing account" classname="tm.khang.kauthenticator.feature.addaccount.AddAccountUseCaseTest" time="0.0"/>
   <testcase name="manual validation reports errors per field" classname="tm.khang.kauthenticator.feature.addaccount.AddAccountUseCaseTest" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

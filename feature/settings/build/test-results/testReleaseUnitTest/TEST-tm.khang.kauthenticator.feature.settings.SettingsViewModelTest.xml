@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="tm.khang.kauthenticator.feature.settings.SettingsViewModelTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-11T06:31:30" hostname="QGM0180-Khang.local" time="0.006">
+<testsuite name="tm.khang.kauthenticator.feature.settings.SettingsViewModelTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2026-09-11T08:36:13" hostname="QGM0180-Khang.local" time="0.005">
   <properties/>
-  <testcase name="persists security and theme changes" classname="tm.khang.kauthenticator.feature.settings.SettingsViewModelTest" time="0.005"/>
+  <testcase name="persists security and theme changes" classname="tm.khang.kauthenticator.feature.settings.SettingsViewModelTest" time="0.004"/>
   <testcase name="loads persisted settings and system state" classname="tm.khang.kauthenticator.feature.settings.SettingsViewModelTest" time="0.0"/>
   <testcase name="does not enable app lock without secure device credential" classname="tm.khang.kauthenticator.feature.settings.SettingsViewModelTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>

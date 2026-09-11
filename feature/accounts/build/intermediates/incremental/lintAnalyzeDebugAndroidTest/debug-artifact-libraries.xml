@@ -1,9 +1,9 @@
 <libraries>
   <library
       name=":@@:feature:accounts::debug"
-      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/485c92610b41b3612ed8ce3cd7532157/transformed/out/jars/classes.jar:/Users/khangtran/.gradle/caches/8.10.2/transforms/485c92610b41b3612ed8ce3cd7532157/transformed/out/jars/libs/R.jar"
+      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/f949c86beac7decf2f47ca69b16d79e3/transformed/out/jars/classes.jar:/Users/khangtran/.gradle/caches/8.10.2/transforms/f949c86beac7decf2f47ca69b16d79e3/transformed/out/jars/libs/R.jar"
       resolved="KAuthenticator.feature:accounts:unspecified"
-      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/485c92610b41b3612ed8ce3cd7532157/transformed/out"
+      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/f949c86beac7decf2f47ca69b16d79e3/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -14,9 +14,9 @@
       proguardRules="proguard.txt"/>
   <library
       name=":@@:core:database::debug"
-      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/a2d4c294ce49a937f78461e33b62f957/transformed/out/jars/classes.jar:/Users/khangtran/.gradle/caches/8.10.2/transforms/a2d4c294ce49a937f78461e33b62f957/transformed/out/jars/libs/R.jar"
+      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/35466d75998d8fcd13ae84442f2834bf/transformed/out/jars/classes.jar:/Users/khangtran/.gradle/caches/8.10.2/transforms/35466d75998d8fcd13ae84442f2834bf/transformed/out/jars/libs/R.jar"
       resolved="KAuthenticator.core:database:unspecified"
-      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/a2d4c294ce49a937f78461e33b62f957/transformed/out"
+      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/35466d75998d8fcd13ae84442f2834bf/transformed/out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -33,6 +33,19 @@
       name=":@@:core:otp"
       jars="/Users/khangtran/KAuthenticator/core/otp/build/libs/otp.jar"
       resolved="::"/>
+  <library
+      name=":@@:core:security::debug"
+      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/5cc790ee54919fbed97446c19a553717/transformed/out/jars/classes.jar:/Users/khangtran/.gradle/caches/8.10.2/transforms/5cc790ee54919fbed97446c19a553717/transformed/out/jars/libs/R.jar"
+      resolved="KAuthenticator.core:security:unspecified"
+      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/5cc790ee54919fbed97446c19a553717/transformed/out"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
   <library
       name="androidx.compose.material3:material3-android:1.3.1@aar"
       jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/a71b5cb8ddd99017d33e561453069377/transformed/material3-release/jars/classes.jar"
@@ -425,19 +438,6 @@
       jars="/Users/khangtran/.gradle/caches/modules-2/files-2.1/org.jetbrains/annotations/23.0.0/8cc20c07506ec18e0834947b84a864bfc094484e/annotations-23.0.0.jar"
       resolved="org.jetbrains:annotations:23.0.0"/>
   <library
-      name=":@@:core:security::debug"
-      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/5cc790ee54919fbed97446c19a553717/transformed/out/jars/classes.jar:/Users/khangtran/.gradle/caches/8.10.2/transforms/5cc790ee54919fbed97446c19a553717/transformed/out/jars/libs/R.jar"
-      resolved="KAuthenticator.core:security:unspecified"
-      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/5cc790ee54919fbed97446c19a553717/transformed/out"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
       name="androidx.biometric:biometric:1.1.0@aar"
       jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/9bcf93e3d30d98703895f064fa0f8d74/transformed/biometric-1.1.0/jars/classes.jar"
       resolved="androidx.biometric:biometric:1.1.0"
@@ -516,10 +516,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.savedstate:savedstate-ktx:1.2.1@aar"
-      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/bcf0072541fd6c7390af28e159117535/transformed/savedstate-ktx-1.2.1/jars/classes.jar"
-      resolved="androidx.savedstate:savedstate-ktx:1.2.1"
-      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/bcf0072541fd6c7390af28e159117535/transformed/savedstate-ktx-1.2.1"
+      name="androidx.loader:loader:1.0.0@aar"
+      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/a4cf5f70be21f51af91de33a821cc523/transformed/loader-1.0.0/jars/classes.jar"
+      resolved="androidx.loader:loader:1.0.0"
+      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/a4cf5f70be21f51af91de33a821cc523/transformed/loader-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -529,10 +529,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.loader:loader:1.0.0@aar"
-      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/a4cf5f70be21f51af91de33a821cc523/transformed/loader-1.0.0/jars/classes.jar"
-      resolved="androidx.loader:loader:1.0.0"
-      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/a4cf5f70be21f51af91de33a821cc523/transformed/loader-1.0.0"
+      name="androidx.savedstate:savedstate-ktx:1.2.1@aar"
+      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/bcf0072541fd6c7390af28e159117535/transformed/savedstate-ktx-1.2.1/jars/classes.jar"
+      resolved="androidx.savedstate:savedstate-ktx:1.2.1"
+      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/bcf0072541fd6c7390af28e159117535/transformed/savedstate-ktx-1.2.1"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -568,19 +568,6 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.7@aar"
-      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/2714baf9e457d056c9e5d524ae98c5e7/transformed/lifecycle-livedata-core-ktx-2.8.7/jars/classes.jar"
-      resolved="androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.7"
-      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/2714baf9e457d056c9e5d524ae98c5e7/transformed/lifecycle-livedata-core-ktx-2.8.7"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
       name="androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7@aar"
       jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/b056219d3428bfe55c3462f22081c3fa/transformed/lifecycle-viewmodel-ktx-2.8.7/jars/classes.jar"
       resolved="androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7"
@@ -594,10 +581,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.lifecycle:lifecycle-livedata:2.8.7@aar"
-      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/cd694b9bd0517862fffd3d1e56f59510/transformed/lifecycle-livedata-2.8.7/jars/classes.jar"
-      resolved="androidx.lifecycle:lifecycle-livedata:2.8.7"
-      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/cd694b9bd0517862fffd3d1e56f59510/transformed/lifecycle-livedata-2.8.7"
+      name="androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.7@aar"
+      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/2714baf9e457d056c9e5d524ae98c5e7/transformed/lifecycle-livedata-core-ktx-2.8.7/jars/classes.jar"
+      resolved="androidx.lifecycle:lifecycle-livedata-core-ktx:2.8.7"
+      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/2714baf9e457d056c9e5d524ae98c5e7/transformed/lifecycle-livedata-core-ktx-2.8.7"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -607,10 +594,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.autofill:autofill:1.0.0@aar"
-      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/636941b07011abafc9c857cb4f6ce4af/transformed/autofill-1.0.0/jars/classes.jar"
-      resolved="androidx.autofill:autofill:1.0.0"
-      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/636941b07011abafc9c857cb4f6ce4af/transformed/autofill-1.0.0"
+      name="androidx.lifecycle:lifecycle-livedata:2.8.7@aar"
+      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/cd694b9bd0517862fffd3d1e56f59510/transformed/lifecycle-livedata-2.8.7/jars/classes.jar"
+      resolved="androidx.lifecycle:lifecycle-livedata:2.8.7"
+      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/cd694b9bd0517862fffd3d1e56f59510/transformed/lifecycle-livedata-2.8.7"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -650,6 +637,19 @@
       jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/94458ec0365975985ef2c970c96baf75/transformed/viewpager-1.0.0/jars/classes.jar"
       resolved="androidx.viewpager:viewpager:1.0.0"
       folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/94458ec0365975985ef2c970c96baf75/transformed/viewpager-1.0.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.autofill:autofill:1.0.0@aar"
+      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/636941b07011abafc9c857cb4f6ce4af/transformed/autofill-1.0.0/jars/classes.jar"
+      resolved="androidx.autofill:autofill:1.0.0"
+      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/636941b07011abafc9c857cb4f6ce4af/transformed/autofill-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -784,10 +784,27 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
+      name="androidx.collection:collection-ktx:1.4.4@jar"
+      jars="/Users/khangtran/.gradle/caches/modules-2/files-2.1/androidx.collection/collection-ktx/1.4.4/2ad14aed781c4a73ed4dbb421966d408a0a06686/collection-ktx-1.4.4.jar"
+      resolved="androidx.collection:collection-ktx:1.4.4"/>
+  <library
       name="androidx.arch.core:core-runtime:2.2.0@aar"
       jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/507ef8838775f5d12540624fc0c3dbd0/transformed/core-runtime-2.2.0/jars/classes.jar"
       resolved="androidx.arch.core:core-runtime:2.2.0"
       folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/507ef8838775f5d12540624fc0c3dbd0/transformed/core-runtime-2.2.0"
+      manifest="AndroidManifest.xml"
+      resFolder="res"
+      assetsFolder="assets"
+      lintJar="lint.jar"
+      publicResources="public.txt"
+      symbolFile="R.txt"
+      externalAnnotations="annotations.zip"
+      proguardRules="proguard.txt"/>
+  <library
+      name="androidx.cursoradapter:cursoradapter:1.0.0@aar"
+      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/91e175d673ed0c4d42ae2365050d7135/transformed/cursoradapter-1.0.0/jars/classes.jar"
+      resolved="androidx.cursoradapter:cursoradapter:1.0.0"
+      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/91e175d673ed0c4d42ae2365050d7135/transformed/cursoradapter-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -810,10 +827,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="androidx.cursoradapter:cursoradapter:1.0.0@aar"
-      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/91e175d673ed0c4d42ae2365050d7135/transformed/cursoradapter-1.0.0/jars/classes.jar"
-      resolved="androidx.cursoradapter:cursoradapter:1.0.0"
-      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/91e175d673ed0c4d42ae2365050d7135/transformed/cursoradapter-1.0.0"
+      name="androidx.interpolator:interpolator:1.0.0@aar"
+      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/ae800ec509e830be34d6e09681282a1c/transformed/interpolator-1.0.0/jars/classes.jar"
+      resolved="androidx.interpolator:interpolator:1.0.0"
+      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/ae800ec509e830be34d6e09681282a1c/transformed/interpolator-1.0.0"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -852,23 +869,6 @@
       symbolFile="R.txt"
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
-  <library
-      name="androidx.interpolator:interpolator:1.0.0@aar"
-      jars="/Users/khangtran/.gradle/caches/8.10.2/transforms/ae800ec509e830be34d6e09681282a1c/transformed/interpolator-1.0.0/jars/classes.jar"
-      resolved="androidx.interpolator:interpolator:1.0.0"
-      folder="/Users/khangtran/.gradle/caches/8.10.2/transforms/ae800ec509e830be34d6e09681282a1c/transformed/interpolator-1.0.0"
-      manifest="AndroidManifest.xml"
-      resFolder="res"
-      assetsFolder="assets"
-      lintJar="lint.jar"
-      publicResources="public.txt"
-      symbolFile="R.txt"
-      externalAnnotations="annotations.zip"
-      proguardRules="proguard.txt"/>
-  <library
-      name="androidx.collection:collection-ktx:1.4.4@jar"
-      jars="/Users/khangtran/.gradle/caches/modules-2/files-2.1/androidx.collection/collection-ktx/1.4.4/2ad14aed781c4a73ed4dbb421966d408a0a06686/collection-ktx-1.4.4.jar"
-      resolved="androidx.collection:collection-ktx:1.4.4"/>
   <library
       name="org.jspecify:jspecify:1.0.0@jar"
       jars="/Users/khangtran/.gradle/caches/modules-2/files-2.1/org.jspecify/jspecify/1.0.0/7425a601c1c7ec76645a78d22b8c6a627edee507/jspecify-1.0.0.jar"
