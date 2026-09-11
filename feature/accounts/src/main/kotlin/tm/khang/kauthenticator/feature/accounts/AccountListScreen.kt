@@ -1,20 +1,27 @@
 package tm.khang.kauthenticator.feature.accounts
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
-import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.FilterChip
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
@@ -26,11 +33,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
 import tm.khang.kauthenticator.core.model.TotpAccount
 import tm.khang.kauthenticator.core.security.SensitiveClipboard
@@ -47,22 +58,51 @@ fun AccountListScreen(
     onDeleteCancel: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
-    Column(modifier.padding(16.dp)) {
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(horizontal = 20.dp),
+    ) {
+        Spacer(Modifier.height(8.dp))
         OutlinedTextField(
             value = state.query,
             onValueChange = onQueryChange,
-            label = { Text("Search") },
+            placeholder = { Text("Search accounts") },
+            singleLine = true,
+            shape = RoundedCornerShape(18.dp),
             modifier = Modifier.fillMaxWidth(),
         )
-        Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            TextButton(onClick = { onSortChange(AccountSort.ISSUER) }) { Text("Issuer") }
-            TextButton(onClick = { onSortChange(AccountSort.ACCOUNT_NAME) }) { Text("Account") }
+
+        Row(
+            modifier = Modifier.padding(top = 12.dp, bottom = 8.dp),
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            FilterChip(
+                selected = state.sort == AccountSort.ISSUER,
+                onClick = { onSortChange(AccountSort.ISSUER) },
+                label = { Text("Issuer") },
+            )
+            FilterChip(
+                selected = state.sort == AccountSort.ACCOUNT_NAME,
+                onClick = { onSortChange(AccountSort.ACCOUNT_NAME) },
+                label = { Text("Account") },
+            )
         }
 
         when {
-            state.isLoading -> CircularProgressIndicator()
-            state.accounts.isEmpty() -> EmptyAccounts()
-            else -> LazyColumn {
+            state.isLoading -> Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                CircularProgressIndicator()
+            }
+
+            state.accounts.isEmpty() -> EmptyAccounts(
+                filtered = state.query.isNotBlank(),
+                modifier = Modifier.fillMaxSize(),
+            )
+
+            else -> LazyColumn(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
                 items(items = state.accounts, key = { it.id }) { account ->
                     AccountRow(
                         account = account,
@@ -71,6 +111,7 @@ fun AccountListScreen(
                         onDeleteRequest = onDeleteRequest,
                     )
                 }
+                item { Spacer(Modifier.height(88.dp)) }
             }
         }
     }
@@ -79,7 +120,7 @@ fun AccountListScreen(
         AlertDialog(
             onDismissRequest = onDeleteCancel,
             title = { Text("Delete authenticator?") },
-            text = { Text("This removes the account and its encrypted secret from this device.") },
+            text = { Text("This account and its encrypted secret will be permanently removed from this device.") },
             confirmButton = { TextButton(onClick = onDeleteConfirm) { Text("Delete") } },
             dismissButton = { TextButton(onClick = onDeleteCancel) { Text("Cancel") } },
         )
@@ -87,14 +128,47 @@ fun AccountListScreen(
 }
 
 @Composable
-private fun EmptyAccounts() {
-    Column(Modifier.padding(top = 32.dp)) {
-        Text("No authenticator accounts", style = MaterialTheme.typography.titleMedium)
-        Text("Scan a QR code or enter a secret manually to add one.")
+private fun EmptyAccounts(
+    filtered: Boolean,
+    modifier: Modifier = Modifier,
+) {
+    Box(modifier, contentAlignment = Alignment.Center) {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(10.dp),
+            modifier = Modifier.padding(32.dp),
+        ) {
+            Box(
+                modifier = Modifier
+                    .size(64.dp)
+                    .background(MaterialTheme.colorScheme.primaryContainer, RoundedCornerShape(20.dp)),
+                contentAlignment = Alignment.Center,
+            ) {
+                Text(
+                    text = if (filtered) "?" else "•••",
+                    color = MaterialTheme.colorScheme.onPrimaryContainer,
+                    style = MaterialTheme.typography.titleLarge,
+                    fontWeight = FontWeight.Bold,
+                )
+            }
+            Text(
+                text = if (filtered) "No matching accounts" else "No accounts yet",
+                style = MaterialTheme.typography.titleLarge,
+                fontWeight = FontWeight.SemiBold,
+            )
+            Text(
+                text = if (filtered) {
+                    "Try a different issuer or account name."
+                } else {
+                    "Tap Add account to scan a QR code or enter a setup key."
+                },
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun AccountRow(
     account: TotpAccount,
@@ -121,29 +195,75 @@ private fun AccountRow(
         value = otpProvider(account, epochSeconds).getOrNull()
     }
     val secondsRemaining = secondsRemainingAt(epochSeconds, account.periodSeconds)
+    val progress = secondsRemaining.toFloat() / account.periodSeconds.toFloat()
 
-    Card(Modifier.fillMaxWidth().padding(vertical = 6.dp)) {
-        Column(Modifier.padding(16.dp)) {
-            Text(account.issuer.ifBlank { "Authenticator" }, style = MaterialTheme.typography.titleMedium)
-            Text(account.accountName)
-            Spacer(Modifier.height(8.dp))
-            Text(
-                text = otp?.code ?: "------",
-                style = MaterialTheme.typography.headlineMedium,
-                modifier = Modifier
-                    .semantics { contentDescription = "One-time password ${otp?.code ?: "unavailable"}" }
-                    .clickable(enabled = otp != null) {
-                        otp?.let { clipboard.copyAndScheduleClear("TOTP code", it.code) }
-                    },
-            )
-            Text(
-                text = "${secondsRemaining}s",
-                modifier = Modifier.semantics {
-                    contentDescription = "$secondsRemaining seconds until code refresh"
-                },
-            )
-            Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+    ElevatedCard(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(22.dp),
+        colors = CardDefaults.elevatedCardColors(containerColor = MaterialTheme.colorScheme.surface),
+        elevation = CardDefaults.elevatedCardElevation(defaultElevation = 2.dp),
+    ) {
+        Column(Modifier.padding(18.dp)) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.Top,
+                horizontalArrangement = Arrangement.SpaceBetween,
+            ) {
+                Column(modifier = Modifier.weight(1f)) {
+                    Text(
+                        account.issuer.ifBlank { "Authenticator" },
+                        style = MaterialTheme.typography.titleMedium,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                    Text(
+                        account.accountName,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
                 TextButton(onClick = { editing = true }) { Text("Edit") }
+            }
+
+            Spacer(Modifier.height(18.dp))
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+            ) {
+                Text(
+                    text = otp?.code?.chunked(3)?.joinToString(" ") ?: "--- ---",
+                    fontFamily = FontFamily.Monospace,
+                    fontSize = 34.sp,
+                    lineHeight = 38.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier
+                        .semantics { contentDescription = "One-time password ${otp?.code ?: "unavailable"}" }
+                        .clickable(enabled = otp != null) {
+                            otp?.let { clipboard.copyAndScheduleClear("TOTP code", it.code) }
+                        },
+                )
+                Text(
+                    text = "${secondsRemaining}s",
+                    style = MaterialTheme.typography.labelLarge,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.semantics {
+                        contentDescription = "$secondsRemaining seconds until code refresh"
+                    },
+                )
+            }
+
+            LinearProgressIndicator(
+                progress = { progress.coerceIn(0f, 1f) },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 14.dp),
+            )
+
+            Row(
+                modifier = Modifier.fillMaxWidth().padding(top = 6.dp),
+                horizontalArrangement = Arrangement.End,
+            ) {
                 TextButton(onClick = { onDeleteRequest(account.id) }) { Text("Delete") }
             }
         }
@@ -154,9 +274,19 @@ private fun AccountRow(
             onDismissRequest = { editing = false },
             title = { Text("Edit account") },
             text = {
-                Column {
-                    OutlinedTextField(value = issuer, onValueChange = { issuer = it }, label = { Text("Issuer") })
-                    OutlinedTextField(value = accountName, onValueChange = { accountName = it }, label = { Text("Account name") })
+                Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
+                    OutlinedTextField(
+                        value = issuer,
+                        onValueChange = { issuer = it },
+                        label = { Text("Issuer") },
+                        singleLine = true,
+                    )
+                    OutlinedTextField(
+                        value = accountName,
+                        onValueChange = { accountName = it },
+                        label = { Text("Account name") },
+                        singleLine = true,
+                    )
                 }
             },
             confirmButton = {

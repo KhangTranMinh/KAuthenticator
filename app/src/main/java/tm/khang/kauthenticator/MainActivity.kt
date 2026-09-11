@@ -6,15 +6,25 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.FilledTonalButton
+import androidx.compose.material3.FilledTonalIconButton
+import androidx.compose.material3.Icon
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -24,8 +34,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -318,27 +330,51 @@ private fun AppHeader(
     onAdd: () -> Unit,
     onSettings: () -> Unit,
 ) {
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 12.dp, vertical = 8.dp),
-        horizontalArrangement = Arrangement.spacedBy(8.dp),
+    Surface(
+        tonalElevation = 2.dp,
+        shadowElevation = 1.dp,
     ) {
-        if (destination != AppDestination.ACCOUNTS) {
-            TextButton(onClick = onAccounts) { Text("Back") }
-        }
-        Text(
-            text = when (destination) {
-                AppDestination.ACCOUNTS -> "KAuthenticator"
-                AppDestination.ADD_ACCOUNT -> "Add account"
-                AppDestination.SETTINGS -> "Settings"
-            },
-            style = MaterialTheme.typography.titleLarge,
-            modifier = Modifier.weight(1f),
-        )
-        if (destination == AppDestination.ACCOUNTS) {
-            Button(onClick = onAdd) { Text("+") }
-            TextButton(onClick = onSettings) { Text("Settings") }
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 20.dp, vertical = 14.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            if (destination != AppDestination.ACCOUNTS) {
+                FilledTonalIconButton(onClick = onAccounts) {
+                    Icon(
+                        imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                        contentDescription = "Back",
+                    )
+                }
+            }
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = when (destination) {
+                        AppDestination.ACCOUNTS -> "KAuthenticator"
+                        AppDestination.ADD_ACCOUNT -> "Add account"
+                        AppDestination.SETTINGS -> "Settings"
+                    },
+                    style = MaterialTheme.typography.headlineSmall,
+                    fontWeight = FontWeight.Bold,
+                )
+                if (destination == AppDestination.ACCOUNTS) {
+                    Text(
+                        "Your verification codes",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+            }
+            if (destination == AppDestination.ACCOUNTS) {
+                FilledTonalButton(onClick = onSettings, shape = RoundedCornerShape(14.dp)) {
+                    Text("Settings")
+                }
+                Button(onClick = onAdd, shape = RoundedCornerShape(14.dp)) {
+                    Text("Add account")
+                }
+            }
         }
     }
 }
@@ -353,21 +389,60 @@ private fun AddAccountScreen(
 
     Column(modifier = Modifier.fillMaxSize()) {
         Row(
-            modifier = Modifier.padding(horizontal = 16.dp),
+            modifier = Modifier.padding(horizontal = 20.dp, vertical = 14.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            Button(onClick = { showScanner = false }) { Text("Manual") }
-            Button(onClick = { showScanner = true }) { Text("Scan QR") }
-        }
-        message?.let {
-            Text(
-                text = it,
-                color = MaterialTheme.colorScheme.error,
-                modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp),
+            FilterChip(
+                selected = !showScanner,
+                onClick = { showScanner = false },
+                label = { Text("Setup key") },
+            )
+            FilterChip(
+                selected = showScanner,
+                onClick = { showScanner = true },
+                label = { Text("Scan QR") },
             )
         }
+
+        message?.let {
+            Surface(
+                color = MaterialTheme.colorScheme.errorContainer,
+                shape = RoundedCornerShape(16.dp),
+                modifier = Modifier.padding(horizontal = 20.dp, vertical = 4.dp),
+            ) {
+                Text(
+                    text = it,
+                    color = MaterialTheme.colorScheme.onErrorContainer,
+                    modifier = Modifier.padding(14.dp),
+                )
+            }
+        }
+
         if (showScanner) {
-            QrScanner(onQrScanned = onQrScanned, modifier = Modifier.fillMaxSize())
+            Column(
+                modifier = Modifier.fillMaxSize().padding(horizontal = 20.dp, vertical = 8.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
+                    Text(
+                        "Scan authenticator QR",
+                        style = MaterialTheme.typography.headlineSmall,
+                        fontWeight = FontWeight.SemiBold,
+                    )
+                    Text(
+                        "Position the QR code inside the camera view. It will be detected automatically.",
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                }
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    shape = RoundedCornerShape(24.dp),
+                    color = MaterialTheme.colorScheme.surfaceVariant,
+                ) {
+                    QrScanner(onQrScanned = onQrScanned, modifier = Modifier.fillMaxSize())
+                }
+            }
         } else {
             ManualAccountForm(onSubmit = onManualSubmit, modifier = Modifier.fillMaxSize())
         }
