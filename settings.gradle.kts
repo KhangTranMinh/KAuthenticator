@@ -23,3 +23,5 @@ include(":core:database")
 include(":feature:addaccount")
 
 include(":feature:accounts")
+
+include(":feature:settings")

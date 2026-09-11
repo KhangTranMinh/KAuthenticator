@@ -179,7 +179,7 @@ document.getElementById(id).style.display = 'none';
     <div class="mdl-layout__header-row">
       <span class="mdl-layout-title">Lint Report: No errors or warnings</span>
       <div class="mdl-layout-spacer"></div>
-      <nav class="mdl-navigation mdl-layout--large-screen-only">Check performed at Fri Sep 11 13:10:30 ICT 2026 by AGP (8.8.2)</nav>
+      <nav class="mdl-navigation mdl-layout--large-screen-only">Check performed at Fri Sep 11 13:31:53 ICT 2026 by AGP (8.8.2)</nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">
@@ -204,7 +204,7 @@ document.getElementById(id).style.display = 'none';
 <tr>
 <td class="countColumn">1</td><td class="issueColumn"><i class="material-icons warning-icon">warning</i>
 <a href="#AutoboxingStateCreation">AutoboxingStateCreation</a>: <code>State&lt;T></code> will autobox values assigned to this state. Use a specialized state type instead.</td></tr>
-<tr><td></td><td class="categoryColumn"><a href="#ExtraIssues">Included Additional Checks (49)</a>
+<tr><td></td><td class="categoryColumn"><a href="#ExtraIssues">Included Additional Checks (61)</a>
 </td></tr>
 <tr><td></td><td class="categoryColumn"><a href="#MissingIssues">Disabled Checks (41)</a>
 </td></tr>
@@ -405,6 +405,46 @@ Calling a Flow operator function within composition will result in a new Flow be
 Vendor: Jetpack Compose<br/>
 Identifier: androidx.compose.runtime<br/>
 Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">https://issuetracker.google.com/issues/new?component=612128</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">FragmentBackPressedCallback<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+The Fragment lifecycle can result in a Fragment being active                 longer than its view. This can lead to unexpected behavior from lifecycle aware                 objects remaining active longer than the Fragment's view. To solve this issue,                 getViewLifecycleOwner() should be used as a LifecycleOwner rather than the                 Fragment instance once it is safe to access the view lifecycle in a                 Fragment's onCreateView, onViewCreated, onActivityCreated, or                 onViewStateRestored methods.<br/><div class="vendor">
+Vendor: Android Open Source Project (androidx.fragment.lint.fragment)<br/>
+Identifier: androidx.fragment.lint.fragment<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=192731">https://issuetracker.google.com/issues/new?component=192731</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">FragmentLiveDataObserve<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+When observing a LiveData object from a fragment's onCreateView,                 onViewCreated, onActivityCreated, or onViewStateRestored method                 getViewLifecycleOwner() should be used as the LifecycleOwner rather than the                 Fragment instance. The Fragment lifecycle can result in the Fragment being                 active longer than its view. This can lead to unexpected behavior from                 LiveData objects being observed longer than the Fragment's view is active.<br/><div class="vendor">
+Vendor: Android Open Source Project (androidx.fragment.lint.fragment)<br/>
+Identifier: androidx.fragment.lint.fragment<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=192731">https://issuetracker.google.com/issues/new?component=192731</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">FragmentTagUsage<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+FragmentContainerView replaces the &lt;fragment> tag as the preferred                 way of adding fragments via XML. Unlike the &lt;fragment> tag, FragmentContainerView                 uses a normal <code>FragmentTransaction</code> under the hood to add the initial fragment,                 allowing further FragmentTransaction operations on the FragmentContainerView                 and providing a consistent timing for lifecycle events.<br/><div class="moreinfo">More info: <a href="https://developer.android.com/reference/androidx/fragment/app/FragmentContainerView.html">https://developer.android.com/reference/androidx/fragment/app/FragmentContainerView.html</a>
+</div><div class="vendor">
+Vendor: Android Open Source Project (androidx.fragment.lint.fragment)<br/>
+Identifier: androidx.fragment.lint.fragment<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=192731">https://issuetracker.google.com/issues/new?component=192731</a><br/>
 </div>
 <br/>
 <br/></div>
@@ -922,6 +962,84 @@ Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">
 </div>
 </div>
 <div class="issue">
+<div class="id">UseAndroidAlpha<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+<code>ColorStateList</code> uses app:alpha without <code>android:alpha</code><br/><div class="vendor">
+Vendor: Android Open Source Project (androidx.appcompat.appcompat)<br/>
+Identifier: androidx.appcompat.appcompat<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=192731">https://issuetracker.google.com/issues/new?component=192731</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">UseAppTint<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+<code>ImageView</code> uses <code>android:tint</code> instead of <code>app:tint</code><br/><div class="vendor">
+Vendor: Android Open Source Project (androidx.appcompat.appcompat)<br/>
+Identifier: androidx.appcompat.appcompat<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=192731">https://issuetracker.google.com/issues/new?component=192731</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">UseCompatLoadingForColorStateLists<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+Use Compat loading of color state lists<br/><div class="vendor">
+Vendor: Android Open Source Project (androidx.appcompat.appcompat)<br/>
+Identifier: androidx.appcompat.appcompat<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=192731">https://issuetracker.google.com/issues/new?component=192731</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">UseCompatLoadingForDrawables<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+Use Compat loading of drawables<br/><div class="vendor">
+Vendor: Android Open Source Project (androidx.appcompat.appcompat)<br/>
+Identifier: androidx.appcompat.appcompat<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=192731">https://issuetracker.google.com/issues/new?component=192731</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">UseCompatTextViewDrawableApis<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+Use Compat loading of compound text view drawables<br/><div class="vendor">
+Vendor: Android Open Source Project (androidx.appcompat.appcompat)<br/>
+Identifier: androidx.appcompat.appcompat<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=192731">https://issuetracker.google.com/issues/new?component=192731</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">UseCompatTextViewDrawableXml<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+<code>TextView</code> uses <code>android:</code> compound drawable attributes instead of <code>app:</code> ones<br/><div class="vendor">
+Vendor: Android Open Source Project (androidx.appcompat.appcompat)<br/>
+Identifier: androidx.appcompat.appcompat<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=192731">https://issuetracker.google.com/issues/new?component=192731</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
 <div class="id">UseOfNonLambdaOffsetOverload<div class="issueSeparator"></div>
 </div>
 <div class="metadata"><div class="explanation">
@@ -929,6 +1047,45 @@ Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">
 Vendor: Jetpack Compose<br/>
 Identifier: androidx.compose.foundation<br/>
 Feedback: <a href="https://issuetracker.google.com/issues/new?component=612128">https://issuetracker.google.com/issues/new?component=612128</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">UseRequireInsteadOfGet<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+AndroidX added new "require____()" versions of common "get___()" APIs, such as getContext/getActivity/getArguments/etc. Rather than wrap these in something like requireNotNull(), using these APIs will allow the underlying component to try to tell you _why_ it was null, and thus yield a better error message.<br/><div class="vendor">
+Vendor: Android Open Source Project (androidx.fragment.lint.fragment)<br/>
+Identifier: androidx.fragment.lint.fragment<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=192731">https://issuetracker.google.com/issues/new?component=192731</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">UseSwitchCompatOrMaterialCode<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+Use <code>SwitchCompat</code> from AppCompat or <code>SwitchMaterial</code> from Material library<br/><div class="vendor">
+Vendor: Android Open Source Project (androidx.appcompat.appcompat)<br/>
+Identifier: androidx.appcompat.appcompat<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=192731">https://issuetracker.google.com/issues/new?component=192731</a><br/>
+</div>
+<br/>
+<br/></div>
+</div>
+</div>
+<div class="issue">
+<div class="id">UseSwitchCompatOrMaterialXml<div class="issueSeparator"></div>
+</div>
+<div class="metadata"><div class="explanation">
+Use <code>SwitchCompat</code> from AppCompat or <code>SwitchMaterial</code> from Material library<br/><div class="vendor">
+Vendor: Android Open Source Project (androidx.appcompat.appcompat)<br/>
+Identifier: androidx.appcompat.appcompat<br/>
+Feedback: <a href="https://issuetracker.google.com/issues/new?component=192731">https://issuetracker.google.com/issues/new?component=192731</a><br/>
 </div>
 <br/>
 <br/></div>

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="tm.khang.kauthenticator.feature.accounts.AccountListViewModelTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-09-11T06:10:06" hostname="QGM0180-Khang.local" time="0.024">
+<testsuite name="tm.khang.kauthenticator.feature.accounts.AccountListViewModelTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-09-11T06:31:24" hostname="QGM0180-Khang.local" time="0.024">
   <properties/>
-  <testcase name="empty state loads successfully" classname="tm.khang.kauthenticator.feature.accounts.AccountListViewModelTest" time="0.011"/>
-  <testcase name="query and sort survive recreation through saved state" classname="tm.khang.kauthenticator.feature.accounts.AccountListViewModelTest" time="0.011"/>
-  <testcase name="sort persists in saved state" classname="tm.khang.kauthenticator.feature.accounts.AccountListViewModelTest" time="0.001"/>
-  <testcase name="delete requires confirmation" classname="tm.khang.kauthenticator.feature.accounts.AccountListViewModelTest" time="0.0"/>
+  <testcase name="empty state loads successfully" classname="tm.khang.kauthenticator.feature.accounts.AccountListViewModelTest" time="0.015"/>
+  <testcase name="query and sort survive recreation through saved state" classname="tm.khang.kauthenticator.feature.accounts.AccountListViewModelTest" time="0.008"/>
+  <testcase name="sort persists in saved state" classname="tm.khang.kauthenticator.feature.accounts.AccountListViewModelTest" time="0.0"/>
+  <testcase name="delete requires confirmation" classname="tm.khang.kauthenticator.feature.accounts.AccountListViewModelTest" time="0.001"/>
   <testcase name="edit updates metadata without requesting plaintext secret" classname="tm.khang.kauthenticator.feature.accounts.AccountListViewModelTest" time="0.0"/>
-  <testcase name="search matches issuer and account name ignoring case" classname="tm.khang.kauthenticator.feature.accounts.AccountListViewModelTest" time="0.001"/>
+  <testcase name="search matches issuer and account name ignoring case" classname="tm.khang.kauthenticator.feature.accounts.AccountListViewModelTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

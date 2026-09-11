@@ -23,5 +23,8 @@ android {
 }
 
 dependencies {
+    implementation(libs.androidx.biometric)
+
+    testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
 }

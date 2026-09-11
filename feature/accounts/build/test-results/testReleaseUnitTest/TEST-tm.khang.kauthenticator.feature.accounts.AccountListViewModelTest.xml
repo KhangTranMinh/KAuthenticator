@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="tm.khang.kauthenticator.feature.accounts.AccountListViewModelTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-09-11T06:10:06" hostname="QGM0180-Khang.local" time="0.018">
+<testsuite name="tm.khang.kauthenticator.feature.accounts.AccountListViewModelTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2026-09-11T06:31:24" hostname="QGM0180-Khang.local" time="0.028">
   <properties/>
-  <testcase name="empty state loads successfully" classname="tm.khang.kauthenticator.feature.accounts.AccountListViewModelTest" time="0.009"/>
-  <testcase name="query and sort survive recreation through saved state" classname="tm.khang.kauthenticator.feature.accounts.AccountListViewModelTest" time="0.007"/>
+  <testcase name="empty state loads successfully" classname="tm.khang.kauthenticator.feature.accounts.AccountListViewModelTest" time="0.014"/>
+  <testcase name="query and sort survive recreation through saved state" classname="tm.khang.kauthenticator.feature.accounts.AccountListViewModelTest" time="0.011"/>
   <testcase name="sort persists in saved state" classname="tm.khang.kauthenticator.feature.accounts.AccountListViewModelTest" time="0.001"/>
   <testcase name="delete requires confirmation" classname="tm.khang.kauthenticator.feature.accounts.AccountListViewModelTest" time="0.0"/>
   <testcase name="edit updates metadata without requesting plaintext secret" classname="tm.khang.kauthenticator.feature.accounts.AccountListViewModelTest" time="0.0"/>
