@@ -15,13 +15,13 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.Button
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material3.FilledTonalButton
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material3.FilterChip
 import androidx.compose.material3.FilledTonalIconButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.FilterChip
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
@@ -50,7 +50,6 @@ import tm.khang.kauthenticator.core.security.AndroidKeystoreSecretCipher
 import tm.khang.kauthenticator.core.security.ScreenshotProtection
 import tm.khang.kauthenticator.feature.accounts.AccountListUiState
 import tm.khang.kauthenticator.feature.accounts.AccountListScreen
-import tm.khang.kauthenticator.feature.accounts.AccountSort
 import tm.khang.kauthenticator.feature.accounts.EncryptedAccountListStore
 import tm.khang.kauthenticator.feature.addaccount.AddAccountUseCase
 import tm.khang.kauthenticator.feature.addaccount.DuplicateDecision
@@ -134,24 +133,6 @@ fun KAuthenticatorApp(
     var duplicate by remember { mutableStateOf<EnrollmentResult.Duplicate?>(null) }
     var enrollmentMessage by remember { mutableStateOf<String?>(null) }
 
-    fun filteredAccounts(
-        accounts: List<TotpAccount> = sourceAccounts,
-        query: String = accountState.query,
-        sort: AccountSort = accountState.sort,
-    ): List<TotpAccount> {
-        val filtered = if (query.isBlank()) {
-            accounts
-        } else {
-            accounts.filter {
-                it.issuer.contains(query, ignoreCase = true) ||
-                    it.accountName.contains(query, ignoreCase = true)
-            }
-        }
-        return when (sort) {
-            AccountSort.ISSUER -> filtered.sortedWith(compareBy(String.CASE_INSENSITIVE_ORDER) { it.issuer })
-            AccountSort.ACCOUNT_NAME -> filtered.sortedWith(compareBy(String.CASE_INSENSITIVE_ORDER) { it.accountName })
-        }
-    }
 
     fun reloadAccounts() {
         accountState = accountState.copy(isLoading = true, error = null)
@@ -161,7 +142,7 @@ fun KAuthenticatorApp(
                 onSuccess = {
                     sourceAccounts = it
                     accountState = accountState.copy(
-                        accounts = filteredAccounts(accounts = it),
+                        accounts = it,
                         isLoading = false,
                         error = null,
                     )
@@ -213,18 +194,6 @@ fun KAuthenticatorApp(
                     state = accountState,
                     otpProvider = { account, epochSeconds ->
                         withContext(Dispatchers.IO) { accountStore.otp(account, epochSeconds) }
-                    },
-                    onQueryChange = { query ->
-                        accountState = accountState.copy(
-                            query = query,
-                            accounts = filteredAccounts(query = query),
-                        )
-                    },
-                    onSortChange = { sort ->
-                        accountState = accountState.copy(
-                            sort = sort,
-                            accounts = filteredAccounts(sort = sort),
-                        )
                     },
                     onEdit = { id, issuer, accountName ->
                         sourceAccounts.firstOrNull { it.id == id }?.let { current ->
@@ -368,11 +337,17 @@ private fun AppHeader(
                 }
             }
             if (destination == AppDestination.ACCOUNTS) {
-                FilledTonalButton(onClick = onSettings, shape = RoundedCornerShape(14.dp)) {
-                    Text("Settings")
+                FilledTonalIconButton(onClick = onSettings) {
+                    Icon(
+                        imageVector = Icons.Default.Settings,
+                        contentDescription = "Settings",
+                    )
                 }
-                Button(onClick = onAdd, shape = RoundedCornerShape(14.dp)) {
-                    Text("Add account")
+                FilledTonalIconButton(onClick = onAdd) {
+                    Icon(
+                        imageVector = Icons.Default.Add,
+                        contentDescription = "Add account",
+                    )
                 }
             }
         }

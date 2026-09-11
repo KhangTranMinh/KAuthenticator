@@ -20,10 +20,14 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ElevatedCard
-import androidx.compose.material3.FilterChip
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Edit
+import androidx.compose.material3.FilledTonalIconButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -50,8 +54,6 @@ import tm.khang.kauthenticator.core.security.SensitiveClipboard
 fun AccountListScreen(
     state: AccountListUiState,
     otpProvider: suspend (TotpAccount, Long) -> Result<AccountOtp>,
-    onQueryChange: (String) -> Unit,
-    onSortChange: (AccountSort) -> Unit,
     onEdit: (String, String, String) -> Unit,
     onDeleteRequest: (String) -> Unit,
     onDeleteConfirm: () -> Unit,
@@ -63,31 +65,7 @@ fun AccountListScreen(
             .fillMaxSize()
             .padding(horizontal = 20.dp),
     ) {
-        Spacer(Modifier.height(8.dp))
-        OutlinedTextField(
-            value = state.query,
-            onValueChange = onQueryChange,
-            placeholder = { Text("Search accounts") },
-            singleLine = true,
-            shape = RoundedCornerShape(18.dp),
-            modifier = Modifier.fillMaxWidth(),
-        )
-
-        Row(
-            modifier = Modifier.padding(top = 12.dp, bottom = 8.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            FilterChip(
-                selected = state.sort == AccountSort.ISSUER,
-                onClick = { onSortChange(AccountSort.ISSUER) },
-                label = { Text("Issuer") },
-            )
-            FilterChip(
-                selected = state.sort == AccountSort.ACCOUNT_NAME,
-                onClick = { onSortChange(AccountSort.ACCOUNT_NAME) },
-                label = { Text("Account") },
-            )
-        }
+        Spacer(Modifier.height(12.dp))
 
         when {
             state.isLoading -> Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
@@ -95,7 +73,6 @@ fun AccountListScreen(
             }
 
             state.accounts.isEmpty() -> EmptyAccounts(
-                filtered = state.query.isNotBlank(),
                 modifier = Modifier.fillMaxSize(),
             )
 
@@ -129,7 +106,6 @@ fun AccountListScreen(
 
 @Composable
 private fun EmptyAccounts(
-    filtered: Boolean,
     modifier: Modifier = Modifier,
 ) {
     Box(modifier, contentAlignment = Alignment.Center) {
@@ -145,23 +121,19 @@ private fun EmptyAccounts(
                 contentAlignment = Alignment.Center,
             ) {
                 Text(
-                    text = if (filtered) "?" else "•••",
+                    text = "•••",
                     color = MaterialTheme.colorScheme.onPrimaryContainer,
                     style = MaterialTheme.typography.titleLarge,
                     fontWeight = FontWeight.Bold,
                 )
             }
             Text(
-                text = if (filtered) "No matching accounts" else "No accounts yet",
+                text = "No accounts yet",
                 style = MaterialTheme.typography.titleLarge,
                 fontWeight = FontWeight.SemiBold,
             )
             Text(
-                text = if (filtered) {
-                    "Try a different issuer or account name."
-                } else {
-                    "Tap Add account to scan a QR code or enter a setup key."
-                },
+                text = "Tap the add button to scan a QR code or enter a setup key.",
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
@@ -221,7 +193,12 @@ private fun AccountRow(
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                 }
-                TextButton(onClick = { editing = true }) { Text("Edit") }
+                FilledTonalIconButton(onClick = { editing = true }) {
+                    Icon(
+                        imageVector = Icons.Default.Edit,
+                        contentDescription = "Edit account",
+                    )
+                }
             }
 
             Spacer(Modifier.height(18.dp))
@@ -261,10 +238,15 @@ private fun AccountRow(
             )
 
             Row(
-                modifier = Modifier.fillMaxWidth().padding(top = 6.dp),
+                modifier = Modifier.fillMaxWidth().padding(top = 10.dp),
                 horizontalArrangement = Arrangement.End,
             ) {
-                TextButton(onClick = { onDeleteRequest(account.id) }) { Text("Delete") }
+                FilledTonalIconButton(onClick = { onDeleteRequest(account.id) }) {
+                    Icon(
+                        imageVector = Icons.Default.Delete,
+                        contentDescription = "Delete account",
+                    )
+                }
             }
         }
     }
